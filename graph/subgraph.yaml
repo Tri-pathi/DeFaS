@@ -1,0 +1,48 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DeFaS
+    network: mumbai
+    source:
+      address: "0xfCE997A8F5cCE6c428256E638fa0b9b041DbF9b2"
+      abi: DeFaS
+      startBlock: 32200857
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ContestClosedNowChooseWinner
+        - ContestCreatedAndJoined
+        - ContestJoined
+        - ContestKickedOFF
+        - DeFasStatusOfContestUpdated
+        - LotteryRewardAnnounced
+        - MoneyAddedtoWinner
+        - OwnershipTransferred
+        - WithDrawnSucessfull
+      abis:
+        - name: DeFaS
+          file: ./abis/DeFaS.json
+      eventHandlers:
+        - event: ContestClosedNowChooseWinner(uint256)
+          handler: handleContestClosedNowChooseWinner
+        - event: ContestCreatedAndJoined(indexed address,uint256)
+          handler: handleContestCreatedAndJoined
+        - event: ContestJoined(address,uint256)
+          handler: handleContestJoined
+        - event: ContestKickedOFF(indexed uint256)
+          handler: handleContestKickedOFF
+        - event: DeFasStatusOfContestUpdated(uint8,uint256)
+          handler: handleDeFasStatusOfContestUpdated
+        - event: LotteryRewardAnnounced(indexed uint256)
+          handler: handleLotteryRewardAnnounced
+        - event: MoneyAddedtoWinner(indexed address,uint256,indexed uint256)
+          handler: handleMoneyAddedtoWinner
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: WithDrawnSucessfull(address,uint256)
+          handler: handleWithDrawnSucessfull
+      file: ./src/de-fa-s.ts

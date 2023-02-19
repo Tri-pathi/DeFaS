@@ -1,0 +1,78 @@
+type ContestClosedNowChooseWinner @entity(immutable: true) {
+  id: Bytes!
+  contestID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ContestCreatedAndJoined @entity(immutable: true) {
+  id: Bytes!
+  participant: Bytes! # address
+  contestID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ContestJoined @entity(immutable: true) {
+  id: Bytes!
+  participant: Bytes! # address
+  contestID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ContestKickedOFF @entity(immutable: true) {
+  id: Bytes!
+  contestID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DeFasStatusOfContestUpdated @entity(immutable: true) {
+  id: Bytes!
+  contestStatus: Int! # uint8
+  contestID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LotteryRewardAnnounced @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MoneyAddedtoWinner @entity(immutable: true) {
+  id: Bytes!
+  winner: Bytes! # address
+  contestID: BigInt! # uint256
+  prize: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithDrawnSucessfull @entity(immutable: true) {
+  id: Bytes!
+  participant: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
